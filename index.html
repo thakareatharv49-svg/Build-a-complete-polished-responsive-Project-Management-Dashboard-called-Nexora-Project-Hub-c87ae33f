@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Daymark — Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Daymark home"><span class="brand-mark">d.</span><span>daymark</span></a>
+      <p class="nav-label">WORKSPACE</p>
+      <nav class="filters" aria-label="Task filters">
+        <button class="filter active" data-filter="all"><span>◫</span> All tasks <span class="count" id="all-count">0</span></button>
+        <button class="filter" data-filter="pending"><span>◷</span> Upcoming <span class="count" id="pending-count">0</span></button>
+        <button class="filter" data-filter="completed"><span>✓</span> Completed <span class="count" id="completed-count">0</span></button>
+      </nav>
+      <div class="sidebar-bottom"><span class="status-dot"></span> Your focus, in one place</div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><span class="eyebrow">YOUR PERSONAL WORKSPACE</span><span class="today" id="today-label"></span></header>
+      <section class="welcome"><div><p class="eyebrow">A LITTLE PROGRESS ADDS UP</p><h1>Make room for <em>what matters.</em></h1><p class="subhead">One clear next step is all you need.</p></div><div class="progress-card"><div class="progress-top"><span>Daily momentum</span><strong id="progress-label">0%</strong></div><div class="progress-track"><span id="progress-bar"></span></div><small id="progress-caption">0 of 0 tasks complete</small></div></section>
+      <section class="task-panel">
+        <div class="panel-heading"><div><h2 id="list-title">All tasks</h2><p id="list-subtitle">Your next steps, gathered together.</p></div><button class="add-button" id="open-form"><span>＋</span> New task</button></div>
+        <form id="task-form" class="task-form" hidden>
+          <div class="form-title"><h3 id="form-heading">Create a task</h3><button type="button" class="icon-button" id="cancel-form" aria-label="Close form">✕</button></div>
+          <label for="task-title">Task title</label><input id="task-title" name="title" maxlength="120" placeholder="What needs to get done?" required>
+          <label for="task-description">Description <span>(optional)</span></label><textarea id="task-description" name="description" rows="2" maxlength="500" placeholder="Add a little context…"></textarea>
+          <div class="form-grid"><div><label for="task-priority">Priority</label><select id="task-priority" name="priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></div><div><label for="task-due">Due date <span>(optional)</span></label><input id="task-due" name="dueDate" type="date"></div></div>
+          <p class="form-error" id="form-error" role="alert"></p><div class="form-actions"><button type="button" class="cancel-button" id="cancel-form-bottom">Cancel</button><button class="add-button" type="submit" id="save-task">Save task</button></div>
+        </form>
+        <div id="task-list" class="task-list" aria-live="polite"></div>
+        <div class="empty-state" id="empty-state"><div class="empty-icon">✳</div><h3 id="empty-title">A fresh start.</h3><p id="empty-copy">No tasks yet. Add your first task and make today count.</p><button class="text-button" id="empty-add">＋ Create your first task</button></div>
+      </section>
+      <footer>Small steps. Real progress. <span>DAYMARK</span></footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
